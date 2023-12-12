@@ -1,11 +1,10 @@
 <script>
     import {onMount} from 'svelte';
-    let dataIn = '';
+    let dataIn;
     const get = async () => {
         const res = await fetch('http://localhost:3000/')
         const data = await res.json(res)
         dataIn = data.msg;
-        console.log(dataIn)
 
     }
 

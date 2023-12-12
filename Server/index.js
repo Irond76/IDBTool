@@ -6,7 +6,7 @@ const cors = require('cors');
 app.use(cors()); 
 
 app.get('/', (req, res) => {
-    res.json({msg: "hello from express"})
+    res.json({msg: "hello from express inside svelte"})
 });
 
 
