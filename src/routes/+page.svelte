@@ -1,6 +1,6 @@
 <section>
     <div class="welcome-container">
-        <h1 class="welcome">Welcome to your Internal Database Tool -- <em>Jeff</em></h1>
+        <h1 class="welcome">Welcome to your IDB Tool -- <em>Jeff</em></h1>
         <hr>
         <h2>What would you like to do today?</h2>
     </div >
