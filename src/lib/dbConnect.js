@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
+import { MONGO_URL } from '$env/static/private'
 
 const connection = () => {
     try {
         
-        const conn = mongoose.connect('mongodb://localhost:27017/Tanks');
+        const conn = mongoose.connect(MONGO_URL);
         console.log('connect to db')
         return conn
     } catch (error) {
