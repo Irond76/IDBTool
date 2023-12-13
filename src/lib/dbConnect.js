@@ -5,7 +5,7 @@ const connection = () => {
     try {
         
         const conn = mongoose.connect(MONGO_URL);
-        console.log('connect to db')
+        console.log('Connected To MongoDB...')
         return conn
     } catch (error) {
         console.log(error)
