@@ -47,6 +47,7 @@
     }
    .add-contractor-btn a:hover {
         align-self: center;
+        box-shadow: -3px -3px 15px #646464;
         text-decoration: none;
         background-color: #fff;
         color: black;
