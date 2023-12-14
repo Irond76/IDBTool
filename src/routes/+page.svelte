@@ -4,10 +4,18 @@
         <hr>
         <h2>What would you like to do today?</h2>
     </div >
-    <div class="action-buttons">
-        <div class="add-contractor-btn">
-            <a href="/addContractor">Add Contractor</a>
+    <div class="action-container">
+        <div class="action-buttons">
+            <div class="add-contractor-btn">
+                <a href="/addContractor">Add Contractor</a>
+            </div>
         </div>
+        <div class="action-buttons">
+            <div class="add-contractor-btn">
+                <a href="/addInvoice">Add Invoice Data</a>
+            </div>
+        </div>
+        
     </div>
 </section>
 
@@ -20,7 +28,7 @@
     }
 
     .action-buttons {
-        width: 80dvw;
+        width: 25%;
         margin: 0 auto;
     }
     .add-contractor-btn {
@@ -50,6 +58,13 @@
         color: black;
     }
     
-   
+   .action-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 1em;
+    margin-top: 5em;
+
+   }
 
 </style>
