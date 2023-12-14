@@ -2,11 +2,22 @@ import mongoose from 'mongoose'
 const { Schema } = mongoose;
 
 const yourSchema = new Schema({
-    name: String,
-    job: String
+    Name: {
+        type:String,
+        required: true
+    },
+    Phone: {
+        type:String,
+        required: true
+    },
+    ContractorPercentage: {
+        type: Number,
+        required: true
+    }
+    
 });
 
-const employee = mongoose.model('employee', yourSchema);
+const contractor = mongoose.model('contractors', yourSchema);
 
 
-export const Employee = employee
+export const Contractor = contractor
