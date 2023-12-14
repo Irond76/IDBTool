@@ -1,6 +1,6 @@
 <section>
     <div class="welcome-container">
-        <h1 class="welcome">Welcome to your IDB Tool -- <em>Jeff</em></h1>
+        <h1 class="welcome">Welcome To IDBTool</h1>
         <hr>
         <h2>What would you like to do today?</h2>
     </div >
@@ -18,10 +18,7 @@
         text-align: center;
         color: #fff;
     }
-    em {
-        font-weight: bolder;
-        font-size: 1.5em;
-    }
+
     .action-buttons {
         width: 80dvw;
         margin: 0 auto;
