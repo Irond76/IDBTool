@@ -36,19 +36,7 @@
 
     </div>
 </div>
-<!-- <div class="contractor-list">
-    {#each data.data as contractor } 
-    <div class="contractor-single">
-            <ul>
-                <li>Contractor: {contractor.Name} </li>
-                <li>Contractor Phone: {contractor.Phone} </li>
-                <li>Contractor Percentage: {contractor.ContractorPercentage}%</li>
-            </ul>
-            
-        </div>
-        {/each}
 
-</div> -->
 
 <style>
     select {

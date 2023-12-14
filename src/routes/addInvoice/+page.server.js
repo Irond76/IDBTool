@@ -28,6 +28,7 @@ export const actions = {
             throw redirect(301, 'http://localhost:5173/invoiceErrorPage');
         }
         await newInvoice.save();
+        throw redirect(301, 'http://localhost:5173/' )
 
     }
 }
@@ -43,3 +44,4 @@ export const load = async () => {
         data
     }
 }
+

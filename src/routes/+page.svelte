@@ -15,6 +15,12 @@
                 <a href="/addInvoice">Add Invoice Data</a>
             </div>
         </div>
+       
+        <div class="action-buttons">
+            <div class="add-contractor-btn">
+                <a href="/viewInvoices">View Invoices</a>
+            </div>
+        </div>
         
     </div>
 </section>
@@ -61,7 +67,7 @@
    .action-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
     row-gap: 1em;
     margin-top: 5em;
 
