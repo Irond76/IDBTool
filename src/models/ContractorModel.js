@@ -17,7 +17,7 @@ const yourSchema = new Schema({
     
 });
 
-const contractor = mongoose.models.Contractor || mongoose.model('contractor', yourSchema);;
+const contractor = mongoose.models.Contractor || mongoose.model('contractor', yourSchema);
 
 
 export const Contractor = contractor

@@ -9,10 +9,10 @@
     <h1 class="welcome">IDBTool - Invoice Data</h1>
     <hr>
 </div >
-<!-- method="post" -->
+
 <div class="form-container"> 
     <div class="form">
-        <form action="/addInvoice" >
+        <form action="/addInvoice" method="post">
             <label for="invoiceNumber">Invoice Number: </label>
             <input type="text" name="invoiceNumber" id="invoiceNumber" placeholder="000">
             <label for="date" >Date: </label>
@@ -21,16 +21,17 @@
             <input type="number" id="dentMoney" name="dentMoney" step="0.01" min="0" placeholder="$0.00" >
             <label for="numberOfContractors" >Number Of Contractors: </label>
             <input type="number" id="numberOfContractors" name="numberOfContractors" max="20" placeholder="0" bind:value={selectedNumberOfContractors}>
-            <label for="contractors">Choose Contractor:</label> 
-            {#each {length:selectedNumberOfContractors} as contractors }
-            <select name="contractors" id="contractors"> 
-                {#each data.data as contractor}
-                    <option value={contractor.Name}>{contractor.Name}</option>
-                {/each} 
-            </select>
-            {/each}
-        
-            <button type="submit" on:submit|preventDefault>Submit</button>
+            <label for="contractors">Choose Contractors:</label>
+  {#each Array.from({ length: selectedNumberOfContractors }) as _, index}
+    <select name={`contractor-${index}`} id={`contractor-${index}`}>
+      {#each data.data as contractor}
+        <option value={contractor.Name}>{contractor.Name}</option>
+      {/each}
+    </select>
+  {/each}
+
+  <button type="submit" on:submit|preventDefault>Submit</button>
+
         </form>
 
     </div>
