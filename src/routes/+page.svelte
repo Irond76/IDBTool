@@ -7,7 +7,7 @@
     <div class="action-container">
         <div class="action-buttons">
             <div class="add-contractor-btn">
-                <a href="/addContractor">Add Contractor</a>
+                <a href="/addContractor">Add or View Contractors</a>
             </div>
         </div>
         <div class="action-buttons">

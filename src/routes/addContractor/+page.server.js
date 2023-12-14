@@ -17,6 +17,7 @@ export const actions = {
                 throw redirect(301, 'http://localhost:5173/errorPage')
             }
             await newContractor.save();
+            throw redirect(301, 'http://localhost:5173/' )
        
     }
     

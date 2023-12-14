@@ -2,7 +2,7 @@
     export let data;
     </script>
 <div>
-    <h1>Add Contractor:</h1>
+    <h1>Add Contractor :</h1>
 </div>
     <div class="form-container"> 
         <div class="form">
