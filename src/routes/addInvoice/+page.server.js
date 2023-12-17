@@ -24,18 +24,21 @@ export const actions = {
             contractorPercentages.push(percentage);
         }
 
+        // Calculate shopMoney by dividing dentMoney by 2 and rounding to 2 decimal places
+        const shopMoney = parseFloat((dentMoney / 2).toFixed(2));
+
         let contractorTotalAmounts = [];
 
         if (numberOfContractors === 1) {
-            // If there is only one contractor, divide dentMoney by the contractor percentage
-            contractorTotalAmounts.push((dentMoney * contractorPercentages[0]) / 100);
+            // If there is only one contractor, divide shopMoney by the contractor percentage and round to 2 decimal places
+            contractorTotalAmounts.push(parseFloat((shopMoney * contractorPercentages[0] / 100).toFixed(2)));
         } else {
             // If there are multiple contractors, calculate the total percentage
             const totalPercentage = contractorPercentages.reduce((acc, percentage) => acc + percentage, 0);
 
-            // Divide dentMoney by the total percentage and distribute among contractors
+            // Divide shopMoney by the total percentage and distribute among contractors, rounding to 2 decimal places
             for (let i = 0; i < numberOfContractors; i++) {
-                const contractorAmount = (dentMoney * contractorPercentages[i]) / totalPercentage;
+                const contractorAmount = parseFloat((shopMoney * contractorPercentages[i] / totalPercentage).toFixed(2));
                 contractorTotalAmounts.push(contractorAmount);
             }
         }
@@ -43,26 +46,25 @@ export const actions = {
         const newInvoice = new Invoice({
             InvoiceNumber: invoiceNumber,
             InvoiceDate: invoiceDate,
-            DentMoney: dentMoney,
+            DentMoney: parseFloat(dentMoney.toFixed(2)), // Round dentMoney to 2 decimal places
+            ShopMoney: shopMoney,
             NumberOfContractors: numberOfContractors,
             ContractorNames: contractors,
-            ContractorPercent: contractorPercentages,
+            ContractorPercent: contractorPercentages.map(p => parseFloat(p.toFixed(2))), // Round contractor percentages to 2 decimal places
             ContractorTotalAmounts: contractorTotalAmounts,
         });
 
         const existingInvoice = await Invoice.find({ InvoiceNumber: invoiceNumber });
-        
-        
+
         if (existingInvoice.length > 0) {
             console.log('Invoice Already Exist')
             throw redirect(301, 'http://localhost:5173/invoiceErrorPage');
         }
-        
-        await newInvoice.save();
-        throw redirect(301, 'http://localhost:5173/' )
 
-    }
-}
+        await newInvoice.save();
+        throw redirect(301, 'http://localhost:5173/');
+    },
+};
 
 export const load = async () => {
     const myData = await Contractor.find({});

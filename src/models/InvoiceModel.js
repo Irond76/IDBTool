@@ -14,6 +14,10 @@ const invoiceSchema = new Schema({
         type:Number,
         required: true
     },
+    ShopMoney:{
+        type: Number,
+        required: true
+    },
     NumberOfContractors: {
         type: Number
     },

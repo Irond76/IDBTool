@@ -1,6 +1,7 @@
 <h1>View Invoices </h1>
 <script>
     export let data;
+    console.log(data);
     </script>
 
     <div class="form-container">
@@ -16,6 +17,7 @@
                     <li>ContractorNames: {invoice.ContractorNames}</li>
                     <li>ContractorPercent: {invoice.ContractorPercent}</li>
                     <li>Paid To Contractor: $ {invoice.ContractorTotalAmounts}</li>
+                    <li>Shop Money: $ {invoice.ShopMoney}</li>
                 </ul>
                 
             </div>

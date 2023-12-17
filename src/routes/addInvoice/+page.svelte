@@ -22,7 +22,7 @@
             <label for="invoiceNumber">Invoice Number: </label>
             <input type="text" name="invoiceNumber" id="invoiceNumber" placeholder="000">
             <label for="date" >Date: </label>
-            <input type="date" name="date" id="date" >
+            <input type="date" name="date" id="date" value="{new Date().toISOString().split('T')[0]}">
             <label for="dentMoney" >Dent Money: </label>
             <input type="number" id="dentMoney" name="dentMoney" step="0.01" min="0" placeholder="$0.00" >
             <label for="numberOfContractors">Number Of Contractors: </label>
