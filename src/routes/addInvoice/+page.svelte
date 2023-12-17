@@ -6,9 +6,7 @@
 
     let selectedContractorPercent = [];
 
-    function updateSelectedContractorPercent(index, value) {
-        selectedContractorPercent[index] = value;
-    }
+
 </script>
 
 <div class="welcome-container">

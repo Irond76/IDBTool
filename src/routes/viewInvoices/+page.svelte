@@ -1,7 +1,9 @@
 <h1>View Invoices </h1>
 <script>
+
     export let data;
     console.log(data);
+   
     </script>
 
     <div class="form-container">
@@ -22,7 +24,6 @@
                 
             </div>
             {/each}
-
 
     </div>
 

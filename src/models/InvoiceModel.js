@@ -8,13 +8,12 @@ const invoiceSchema = new Schema({
     },
     InvoiceDate: {
         type: Date,
-
     },
     DentMoney: {
-        type:Number,
+        type: Number,
         required: true
     },
-    ShopMoney:{
+    ShopMoney: {
         type: Number,
         required: true
     },
@@ -31,14 +30,13 @@ const invoiceSchema = new Schema({
     }],
     ContractorTotalAmounts: [{
         type: Number,
-    }]
-
+    }],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
-
-
-
 const invoice = mongoose.models.Invoice || mongoose.model('invoice', invoiceSchema);
-
 
 export const Invoice = invoice;
