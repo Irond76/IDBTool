@@ -1,5 +1,6 @@
 <script>
     export let data;
+    console.log(data);
     </script>
 <div>
     <h1>Add Contractor :</h1>
@@ -11,8 +12,8 @@
                 <input type="text" name="name" id="name" placeholder="John Doe">
                 <label for="phone" >Phone Number:</label>
                 <input type="tel" name="phone" id="phone" placeholder="(555) 555-5555">
-                <label for="percentage" >Contractor Percentage: %</label>
-                <input type="number" name="percentage" id="percentage" max="100">
+                <label for="percentage" >Contractor Percentage:</label>
+                <input type="number" name="percentage" id="percentage" max="100" >
                 <button type="submit" on:submit|preventDefault>Submit</button>
             </form>
 

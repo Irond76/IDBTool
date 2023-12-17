@@ -14,10 +14,13 @@
                     <li>DentMoney: $ {invoice.DentMoney} </li>
                     <li>NumberOfContractors: {invoice.NumberOfContractors}</li>
                     <li>ContractorNames: {invoice.ContractorNames}</li>
+                    <li>ContractorPercent: {invoice.ContractorPercent}</li>
+                    <li>Paid To Contractor: $ {invoice.ContractorTotalAmounts}</li>
                 </ul>
                 
             </div>
             {/each}
+
 
     </div>
 

@@ -13,7 +13,8 @@ const yourSchema = new Schema({
     ContractorPercentage: {
         type: Number,
         required: true
-    }
+    },
+    
     
 });
 

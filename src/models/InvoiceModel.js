@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { Contractor } from "../models/ContractorModel";
 const { Schema } = mongoose;
 
 const invoiceSchema = new Schema({
@@ -18,7 +17,17 @@ const invoiceSchema = new Schema({
     NumberOfContractors: {
         type: Number
     },
-    ContractorNames: []
+    ContractorNames: [{
+        type: String,
+        ref: 'contractor'
+    }],
+    ContractorPercent: [{
+        type: String,
+        ref: 'Contractor'
+    }],
+    ContractorTotalAmounts: [{
+        type: Number,
+    }]
 
 });
 
