@@ -34,6 +34,7 @@
                             <option value={contractor.Name}>{contractor.Name}</option>
                         {/each}
                     </select>
+
                     {#if contractorPercent.length > 0}
                         <label for={`contractorPercent-${index}`}>Percent:</label>
                         <select bind:value={selectedContractorPercent[index]} name={`contractorPercent-${index}`} id={`contractorPercent-${index}`}>

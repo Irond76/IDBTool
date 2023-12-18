@@ -4,7 +4,7 @@ import { Contractor } from "../../models/ContractorModel.js";
 
 import { redirect } from '@sveltejs/kit';
 
-Conn()
+Conn();
 
 export const actions = {
     default: async ({ request }) => {
@@ -24,33 +24,25 @@ export const actions = {
             contractorPercentages.push(percentage);
         }
 
-        // Calculate shopMoney by dividing dentMoney by 2 and rounding to 2 decimal places
-        const shopMoney = parseFloat((dentMoney / 2).toFixed(2));
+        // Calculate the amount each contractor should receive
+        const contractorTotalAmounts = contractorPercentages.map(percentage =>
+            parseFloat((dentMoney / numberOfContractors * percentage / 100).toFixed(2))
+        );
 
-        let contractorTotalAmounts = [];
+        // Calculate the total amount paid to contractors
+        const totalContractorAmount = contractorTotalAmounts.reduce((acc, amount) => acc + amount, 0);
 
-        if (numberOfContractors === 1) {
-            // If there is only one contractor, divide shopMoney by the contractor percentage and round to 2 decimal places
-            contractorTotalAmounts.push(parseFloat((shopMoney * contractorPercentages[0] / 100).toFixed(2)));
-        } else {
-            // If there are multiple contractors, calculate the total percentage
-            const totalPercentage = contractorPercentages.reduce((acc, percentage) => acc + percentage, 0);
-
-            // Divide shopMoney by the total percentage and distribute among contractors, rounding to 2 decimal places
-            for (let i = 0; i < numberOfContractors; i++) {
-                const contractorAmount = parseFloat((shopMoney * contractorPercentages[i] / totalPercentage).toFixed(2));
-                contractorTotalAmounts.push(contractorAmount);
-            }
-        }
+        // Calculate shopMoney as the remaining balance after paying contractors
+        const shopMoney = parseFloat((dentMoney - totalContractorAmount).toFixed(2));
 
         const newInvoice = new Invoice({
             InvoiceNumber: invoiceNumber,
             InvoiceDate: invoiceDate,
-            DentMoney: parseFloat(dentMoney.toFixed(2)), // Round dentMoney to 2 decimal places
+            DentMoney: parseFloat(dentMoney.toFixed(2)),
             ShopMoney: shopMoney,
             NumberOfContractors: numberOfContractors,
             ContractorNames: contractors,
-            ContractorPercent: contractorPercentages.map(p => parseFloat(p.toFixed(2))), // Round contractor percentages to 2 decimal places
+            ContractorPercent: contractorPercentages.map(p => parseFloat(p.toFixed(2))),
             ContractorTotalAmounts: contractorTotalAmounts,
         });
 
@@ -69,13 +61,16 @@ export const actions = {
 export const load = async () => {
     const myData = await Contractor.find({});
 
-    
     let data = myData.map((item) => {
         return JSON.parse(JSON.stringify(item))
-    })
-    
+    });
+
     return {
         data
-    }
-}
+    };
+};
+
+
+
+
 
