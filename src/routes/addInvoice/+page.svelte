@@ -1,18 +1,22 @@
-
 <script>
     export let data;
-    let selectedNumberOfContractors = 1;
     let contractorPercent = data.data.map((item) => item.ContractorPercentage);
-
+    let selectedContractorName = [];
     let selectedContractorPercent = [];
 
-
+    $: {
+        // Update selectedContractorPercent based on selectedContractorName
+        selectedContractorPercent = selectedContractorName.map((name) => {
+            const contractor = data.data.find((c) => c.Name === name);
+            return contractor ? contractor.ContractorPercentage : '';
+        });
+    }
 </script>
 
 <div class="welcome-container">
     <h1 class="welcome">IDBTool - Invoice Data</h1>
     <hr>
-</div >
+</div>
 
 <div class="form-container"> 
     <div class="form">
@@ -24,34 +28,32 @@
             <label for="dentMoney" >Dent Money: </label>
             <input type="number" id="dentMoney" name="dentMoney" step="0.01" min="0" placeholder="$0.00" >
             <label for="numberOfContractors">Number Of Contractors: </label>
-            <input type="number" id="numberOfContractors" name="numberOfContractors" max="20" placeholder="0" bind:value={selectedNumberOfContractors}>
+            <input type="number" id="numberOfContractors" name="numberOfContractors" max="{contractorPercent.length}" placeholder="0" bind:value={selectedContractorName.length}>
 
             <label for="contractors">Choose Contractors:</label>
-            {#each Array.from({ length: selectedNumberOfContractors }) as _, index}
-                <div class="contractor-group">   
-                    <select name={`contractor-${index}`} id={`contractor-${index}`}>
+            {#each Array.from({ length: selectedContractorName.length }) as _, index}
+                <div class="contractor-group">
+                    <select name={`contractor-${index}`} id={`contractor-${index}`} bind:value={selectedContractorName[index]}>
                         {#each data.data as contractor }
                             <option value={contractor.Name}>{contractor.Name}</option>
-                        {/each}
-                    </select>
-
-                    {#if contractorPercent.length > 0}
-                        <label for={`contractorPercent-${index}`}>Percent:</label>
-                        <select bind:value={selectedContractorPercent[index]} name={`contractorPercent-${index}`} id={`contractorPercent-${index}`}>
-                            {#each contractorPercent as percent }
-                                <option value={percent}>{percent}</option>
                             {/each}
                         </select>
+                        
+                    </div>
+                    {#if contractorPercent.length > 0}
+                    <label for={`contractorPercent-${index}`}>Percent: {selectedContractorPercent[index]}</label>
+                    <input type="hidden" bind:value={selectedContractorPercent[index]} name={`contractorPercent-${index}`} id={`contractorPercent-${index}`}  >
+                    <hr>
                     {/if}
-                </div>
-            {/each}
+                    {/each}
 
-
-
+                
             <button type="submit" on:submit|preventDefault>Submit</button>
         </form>
     </div>
 </div>
+
+
 
 
 <style>

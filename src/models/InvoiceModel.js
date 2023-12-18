@@ -15,7 +15,8 @@ const invoiceSchema = new Schema({
     },
     ShopMoney: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     NumberOfContractors: {
         type: Number
@@ -25,11 +26,12 @@ const invoiceSchema = new Schema({
         ref: 'contractor'
     }],
     ContractorPercent: [{
-        type: String,
+        type: Number,
         ref: 'Contractor'
     }],
     ContractorTotalAmounts: [{
-        type: Number,
+        type: [Number],
+        default: [0,0,0]
     }],
     createdAt: {
         type: Date,
